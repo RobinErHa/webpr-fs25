@@ -1,27 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Scope Tests</title>
-</head>
-<body>
+  </head>
+
+  <body>
     <script>
+      const test = (x) => document.writeln(String(x));
+      //
+      // const x = 0;
+      // function foo() {
+      //   const x = 1;
+      //   document.writeln(String(x));
+      // }
+      // foo();
+      // document.writeln(String(x));
 
-        const test = x => document.writeln( String(x));
+      const id = (x) => x;
+      const Konst = (x) => (y) => x;
 
-        let x = 0;
-        function foo() {
-            let x = 1;
-            document.writeln(String(x));
-        }
-        foo();
-        document.writeln(String(x));
+      test(id(id) === id);
+      test(Konst(id)(undefined) === id);
+      test(((y) => id)(undefined) === id); //Konst
 
-        // test( id(id) === id);
-        // test( Konst(id)(undefined) === id);
-        // test( Kite(undefined)(id) === id);
+      //Lambda Calculus example:
+      //test(Kite(undefined)(id) === id);
+      // const Kite = (x) => (y) => y;
+      // const Kite = (x) => (y) => f(y);
+      // const Kite = (x) => (y) => id(y);
+      // const Kite = (x) => Konst(id)(x);
+      // const Kite = (x) => Konst(id)(x);
+      const Kite = Konst(id);
 
+      test(Kite(undefined)(id) === id);
     </script>
-</body>
+  </body>
 </html>
-
