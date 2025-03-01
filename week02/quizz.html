@@ -19,17 +19,58 @@
       // } catch (e) {
       //   document.writeln(false);
       // }
-      let x = 0;
-      (() => {
-        let x = 2;
-        return x;
-      })();
-      // two();
-      try {
-        document.writeln(x === 0);
-      } catch (e) {
-        document.writeln(false);
-      }
+      // let x = 0;
+      // (() => {
+      //   let x = 2;
+      //   return x;
+      // })();
+      // // two();
+      // try {
+      //   document.writeln(x === 0);
+      // } catch (e) {
+      //   document.writeln(false);
+      // }
+
+      //q6
+      document.writeln("(q6:1)");
+      const id = (x) => x;
+      const konst = (x) => (y) => x;
+      const F1 = (x) => (y) => konst(id)(x)(y);
+      const F2 = (x) => konst(id)(x);
+      const F3 = konst(id);
+
+      document.writeln(F1(3)(1));
+      document.writeln(F2(3)(1));
+      document.writeln(F3(3)(1));
+
+      document.writeln("(q6:2)");
+      const F4 = (x) => (x) => x;
+      const F5 = (y) => (y) => x;
+
+      document.writeln(F4(1)(2));
+      //document.writeln(F5(1)(2));
+
+      document.writeln("(q6:3)");
+      const a1 = (y) => id(y);
+      const a2 = (y) => y;
+      document.writeln(a1(4) === a2(4));
+
+      document.writeln("(q6:6)");
+      const id1 = (x) => x;
+      const id2 = (y) => y;
+      document.writeln(id1(5) === id1(5));
+
+      document.writeln("(q6:6)");
+      const fst = (x) => (y) => x;
+      const snd = (x) => (y) => y;
+      const sol = fst(id);
+      document.writeln(snd(1)(2));
+      document.writeln(sol(1)(2));
+
+      const x_ = Math.random();
+      const y_ = Math.random();
+
+      document.writeln(snd(x_)(y_) === y_);
     </script>
   </body>
 </html>

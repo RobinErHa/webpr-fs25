@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scope Tests</title>
+  </head>
+
+  <body>
+    <script>
+      // let x = 0;
+      // function two() {
+      //   let x = 2;
+      //   return x;
+      // }
+      // two();
+      // try {
+      //   x;
+      //   document.writeln(x === 0);
+      // } catch (e) {
+      //   document.writeln(false);
+      // }
+      // let x = 0;
+      // (() => {
+      //   let x = 2;
+      //   return x;
+      // })();
+      // // two();
+      // try {
+      //   document.writeln(x === 0);
+      // } catch (e) {
+      //   document.writeln(false);
+      // }
+      //q6
+
+      const id = (x) => x;
+      const konst = (x) => (y) => x;
+      const F1 = (x) => (y) => konst(id)(x)(y);
+      const F2 = (x) => konst(id)(x);
+      const F3 = konst(id);
+
+      document.writeln(F2(1)(2);
+    </script>
+  </body>
+</html>
