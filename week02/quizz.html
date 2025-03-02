@@ -45,10 +45,10 @@
 
       document.writeln("(q6:2)");
       const F4 = (x) => (x) => x;
-      const F5 = (y) => (y) => x;
+      const F5 = (y) => (x) => y;
 
       document.writeln(F4(1)(2));
-      //document.writeln(F5(1)(2));
+      document.writeln(F5(1)(2));
 
       document.writeln("(q6:3)");
       const a1 = (y) => id(y);
