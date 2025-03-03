@@ -1,11 +1,10 @@
 // requires lambda.js
 
-
 const ok = [];
 
 // // id
-// ok.push( id(1) === 1 );
-// ok.push( id(id) === id );
+ok.push(id(1) === 1);
+ok.push(id(id) === id);
 //
 // // konst
 // ok.push( konst(42)(0) === 42 );
@@ -64,20 +63,18 @@ const ok = [];
 // ok.push( team(lead)(fn)   === "Dierk");
 // ok.push( team(deputy)(ln) === "Federer");
 //
-// // Pair equal
+// Pair equal
+const dierk = Pair("Dierk")("Koenig"); //immutable
+ok.push(dierk(firstname) === "Dierk");
+ok.push(dierk(lastname) === "Koenig");
 //
 // // either
 //
 
+const safeDiv = (num) => (divisor) =>
+  divisor === 0 ? Left("schlecht!") : Right(num / divisor);
 
-// const safeDiv = num => divisor =>
-//     divisor === 0
-//     ? Left("schlecht!")
-//     : Right(num / divisor);
-//
-// either( safeDiv(1)(0)  )
-//       ( x => console.error(x))
-//       ( x => console.log(x));
+either(safeDiv(1)(1))((x) => console.error(x))((x) => console.log(x));
 
 //
 // const [Cash, CreditCard, Invoice, PayPal, pay] = Choice(4);
@@ -97,28 +94,26 @@ const ok = [];
 // ok.push( doPay(invo) === "Roger 4711");
 // ok.push( doPay(pal ) === "pal: Dierk");
 
-
-
-
 // test result report
 const allTestsOk = () => {
-    for (let i = 0; i < ok.length; i++) { // not nice, yet. Needs improvement
-        if (false === ok[i]) {
-            return false;
-        }
+  for (let i = 0; i < ok.length; i++) {
+    // not nice, yet. Needs improvement
+    if (false === ok[i]) {
+      return false;
     }
-    return true;
+  }
+  return true;
 };
 
 if (allTestsOk()) {
-    document.writeln("All "+ ok.length +" tests ok.");
+  document.writeln("All " + ok.length + " tests ok.");
 } else {
-    document.writeln("Not all tests ok! Details:");
-    for (let i = 0; i < ok.length; i++) {
-        if(ok[i]) {
-            document.writeln("Test "+ i +" ok");
-        } else {
-            document.writeln("Test "+ i +" failed");
-        }
+  document.writeln("Not all tests ok! Details:");
+  for (let i = 0; i < ok.length; i++) {
+    if (ok[i]) {
+      document.writeln("Test " + i + " ok");
+    } else {
+      document.writeln("Test " + i + " failed");
     }
+  }
 }
