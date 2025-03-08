@@ -1,26 +1,25 @@
+// const id = (x) => x;
+// const or = (a) => (b) => a(b(T)(T))(b(T)(F)); //start
+// const snd = (x) => (y) => y;
+// const konst = (x) => (y) => x;
+
 const id = (x) => x;
-const or = (a) => (b) => a(b(T)(T))(b(T)(F)); //start
-const snd = (x) => (y) => y;
 const konst = (x) => (y) => x;
+const snd = (x) => (y) => y;
 
-=======
-const id    = x      => x;
-const konst = x => y => x;
-const snd   = x => y => y;
+const T = konst;
+const F = snd;
 
-const T =  konst;
-const F =  snd;
+const and = (a) => (b) => a(b)(a);
+const or = (a) => a(a);
 
-const and = a => b => a (b) (a);
-const or  = a => a (a) ;
+// const Pair = (fn) => (ln) => (sel) => sel(fn)(ln);
+// const firstname = konst;
+// const lastname = snd;
 
-const Pair      =  fn => ln => sel =>  sel(fn)(ln) ;
-const firstname = konst;
-const lastname  = snd;
-
-const Left   = x => lch => rch => lch(x);
-const Right  = x => lch => rch => rch(x);
-const either = id;
+// const Left = (x) => (lch) => (rch) => lch(x);
+// const Right = (x) => (lch) => (rch) => rch(x);
+// const either = id;
 
 //Pair
 const Pair = (fn) => (ln) => (f) => f(fn)(ln);
