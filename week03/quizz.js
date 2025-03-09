@@ -120,7 +120,7 @@
   document.writeln("(Task: Q9c)");
   const id = (x) => x;
 
-  const eShow = (x) => (y) => (z) => z === 0;
+  const eShow = (e) => e(id)((x) => "Result is: " + x);
   document.writeln(eShow(safeDiv(1)(0)));
   // const eShow = (f) => (x) => (y) =>
   //   y === 0 ? Left(f) : Right((f) => "Result is: " + x);
