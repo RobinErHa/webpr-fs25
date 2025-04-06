@@ -8,6 +8,18 @@
   document.writeln(empty instanceof Empty);
 }
 {
+  document.writeln("(q13x)");
+  const Empty = (() => {
+    function Empty() {}
+    return Empty;
+  })();
+  const empty = new Empty();
+  const also = new Empty();
+  Empty.prototype.answer = 42;
+  document.writeln(empty.answer === 42 && also.answer === 42);
+}
+
+{
   document.writeln("(q13b)");
   function Empty() {}
   const empty = new Empty();
@@ -77,4 +89,7 @@
   me.setAge(50);
   document.writeln(me.getAge());
   document.writeln(me.getAge() === 50);
+
+  {
+  }
 }
